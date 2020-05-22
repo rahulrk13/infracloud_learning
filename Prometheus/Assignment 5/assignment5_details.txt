@@ -1,0 +1,26 @@
+Assignment 5:
+
+Write a Python program to expose Prometheus metrics using the Python client
+
+Script file name: assignment5.py
+
+Steps:
+
+1. Wrote a script which exposes 2 metrics using Python's Flask library
+Counter: python_total_invocation - Number of times the endpoint was invoked
+Histogram: python_request_duration_seconds - Number of seconds the wait counter was ran for.
+
+Basic Idea: Script has 2 endpoints:
+1: /
+ which just shows a hello message, but waits for some seconds in range of 1 to 10. Counter metrics will increase each time the request is made and the Histogram metrics has some pre-defined buckets in which it will store the data for sleep timer seconds
+2: /metrics
+which will show the metrics collected.
+
+We will then configure prometheus to monitor this app and search for the metrics we added with this script.
+
+Screenshots:
+
+ss1: Our flask app showing the collected metrics
+ss2: Shows updated prometheus configuration file where we added the settings to monitor our app for new metrics
+ss3. Shows Generated metrics
+ss4. Shows the new metrics are searchable

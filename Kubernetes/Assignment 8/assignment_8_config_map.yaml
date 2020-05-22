@@ -1,0 +1,6 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: assignment8config
+data:
+  reverse-proxy.conf: server { listen 80; location / { proxy_pass http://192.x.x.2; / } / }

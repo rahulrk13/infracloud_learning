@@ -1,0 +1,10 @@
+Assignment 10:
+Deploy an application with resource requests.
+
+Solution:
+Resource allocation is nothing but a way to manage CPU/memory assignment to specific containers, with which we can manage vertical scaling (increasing resources when needed rather than increasing number of containers which is done in horizontal scaling).
+
+files:
+
+assignment_10_deployment.yaml
+assignment_10_pod_discription.txt

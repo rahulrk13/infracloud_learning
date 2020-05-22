@@ -1,0 +1,37 @@
+Assignment 2:
+Install Prometheus using Helm & access Prometheus using kubectl port-forward.
+
+Installed using below stapes
+
+Create service role and role binding for Helm
+
+assignment2_serviceacc.yaml
+
+Download helm installed script:
+wget https://github.io/get_helm.sh
+
+Install helm
+bash get_helm.sh
+
+Init helm:
+helm init --service-account helm
+
+To verify if the tiller component is installed, run below command
+kubectl get svc, deploy -n kube-system
+
+Install prometheus using helm
+helm install stable/prometheus
+
+command for port-forwarding
+kubectl --namespace default port-forward <generated_pod_name> 9091
+
+in my case
+kubectl --namespace default port-forward exciting-gopher-prometheus-pushgateway-78b567cc7c-f4qp2 9091
+
+However I was not able to get the correct IP in GKE with ifconfig so had to change the service to LB type and access the prometheus on internet. 
+
+kubectl edit svc exciting-gopher-prometheus-server
+Change the service type to LB and save the change, the changes take place immediately
+
+Screenshots:
+ss1: Shows prometheus up and running which was installed using helm

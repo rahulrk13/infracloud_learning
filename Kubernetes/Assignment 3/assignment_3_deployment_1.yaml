@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pod-details-doc
+  labels:
+    doc: pod
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      doc: pod
+      app: nginx
+  template:
+    metadata:
+      labels:
+        doc: pod
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: workdir
+              mountPath: /usr/share/nginx/html
+      initContainers:
+        - name: createandcopyfile
+          image: busybox
+          command:
+            - wget
+            - "-O"
+            - "/workdir/index.html"
+            - https://kubernetes.io/docs/concepts/workloads/pods/pod-overview
+          volumeMounts:
+            - name: workdir
+              mountPath: /workdir
+      volumes:
+        - name: workdir
+          emptyDir: {}

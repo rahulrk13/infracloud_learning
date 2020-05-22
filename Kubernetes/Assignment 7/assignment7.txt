@@ -1,0 +1,22 @@
+Assignment 7: Deploy a pod which uses a secret.
+
+Solution:
+Secrets can be used to pass sensitive information (like database credentials) to pods and containers without actually have to write them into pod specification or container image.
+
+Ways to create secret: There are number of ways you can create secret, with kubectl command, using files or directly passing the key value names, or creating base64 encoded string and then using it to create the secret object, which then can be used in pod specification.
+
+Files:
+
+First, we need to create base64 encoded format of the credentials we wish to add as secrets like username password
+eg:
+echo "admin" | base64
+echo "password" | base64
+
+assignment_7_secret.yaml
+assignment7_pod.yaml
+
+Once the containers are created, we can get the value of these secrets as environment variables.
+
+Screenshots:
+ss1: Shows secret and pod created
+ss2: Shows that after login we are able to read the environment variables which were added through the secret

@@ -1,0 +1,33 @@
+Assignment 3. Run an nginx pod, upgrade the pod, rollback the deployment, record history.
+
+Solution:
+We can achieve this with 2 images or using different tag for the same image for the container specification in the deployment yaml.
+Below deployment patterns are available to us.
+
+1. Rolling update: where the pods are updated one each time, one by one.
+2. Canary update: Where some of the pods are updated (Like 1 of 3). This can be achieved with the help of one of more labels
+3. Blue Green update approach: Where a new set of pods are created, traffic is routed on new pods with the help of service selectors and then the old once are decommissioned.
+
+In example here we will be using blue green deployment pattern
+
+Step 1. Create a deployment(1) and service. The selectors should be as such that the service will specifically point to deployment(1).
+Step 2. Create new deployment(2) with changes needed which essentially make the new deployment different than previous (like new version of the same product). There should be an additional label which makes it different. Optionally we can create a separate service to point to this new deployment which can help us for doing any post creation checks.
+Step 3. Make the selectors changes in service that we created in step 1 so that as soon as the change in service is applied, the service will start pointing to the new deployment and stop pointing to old one. 
+
+Roll back strategy: If we find anything wrong in new deployment and we need to rollback to previous change or version, just revert back the changes done in step 3, and the service should start pointing to the old version again. 
+
+Step 4. Once we are sure that new version is what we need and is stable, we can delete the old deployment completely, which will complete the deployment process and all its steps.
+
+In the example here we will create a deployment 1 which will serve the website showing details related to K8s pod(version 1). and version 2 will be website related to k8s deployment.
+
+Files
+assignment_3_deployment_1.yaml
+assignment_3_deployment_2.yaml
+assignment_3_service.yaml
+
+Screenshots
+step1: output with deployment 1 and service(v1). Shows the website about pods.
+step2: Both deployment are up
+step3: Made change in selector in service configuration and updated the same on terminal
+successfulOutputAfterStep3: showing same webpage with updated content
+step4: Deleted old deployment after successful upgrade

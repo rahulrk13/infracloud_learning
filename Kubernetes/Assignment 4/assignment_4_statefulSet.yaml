@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+spec:
+  replicas: 2
+  serviceName: postgres
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres
+          volumeMounts:
+            - name: pgdata
+              mountPath: /var/lib/pgsql
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: postgresdb
+            - name: POSTGRES_USER
+              value: postgresadmin
+            - name: POSTGRES_PASSWORD
+              value: admin123
+      volumes:
+        - name: pgdata
+          emptyDir: {}

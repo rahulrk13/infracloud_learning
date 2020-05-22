@@ -1,0 +1,28 @@
+rahulrk512@cloudshell:~/assignment10$ kubectl describe pod assignment10pod
+Name:         assignment10pod
+Namespace:    default
+Priority:     0
+Node:         gke-testcluster-default-pool-d1c60745-1j7j/10.128.0.3
+Start Time:   Mon, 18 May 2020 00:34:50 +0530
+Labels:       <none>
+Annotations:  Status:  Running
+IP:           10.8.1.7
+IPs:          <none>
+Containers:
+  nginx:
+    Container ID:   docker://ca91f9b426369130cb71c624b905ba8714809acb52a99efb049f26a4fb82b128
+    Image:          nginx
+    Image ID:       docker-pullable://nginx@sha256:8269a7352a7dad1f8b3dc83284f195bac72027dd50279422d363d49311ab7d9b
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Mon, 18 May 2020 00:34:51 +0530
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     500m
+      memory:  128Mi
+    Requests:
+      cpu:        250m
+      memory:     64Mi
+    Environment:  <none>

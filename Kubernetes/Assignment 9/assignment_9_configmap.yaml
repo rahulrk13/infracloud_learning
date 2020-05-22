@@ -1,0 +1,7 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: assignment9config
+data:
+  username: this_admin
+  password: this_apassword

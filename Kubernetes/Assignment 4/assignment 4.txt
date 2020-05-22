@@ -1,0 +1,22 @@
+Assignment 4.
+Convert a Postgres deployment to a statefulset and deploy that on the cluster.
+
+Solution:
+
+Stateless pods provide normal mechanism in k8s where the pods gets created as replica of each other. however if we are working on such an application in which its important for the application to point to specific pod, or in other words the hostname or identification of each replica is also important, we can use statefulSet in such cases.
+
+Service can be created as headless service in this case. In summery each pod will have a specific identification. Thus with statefulSet, we can have a specific Hostname/DNS name for each of the pod. This feature can be used for setup related purpose, for ex, when we setup mysql, we will need to have a setup script which will identify the master node and slave node and configure them in specific manner depending upon its role. This can be managed using statefulSet, in which we can setup the automation such that it will identify the role from hostname and configure it accordingly.
+
+Hostname format: node hostname will start from 0 to (number of replica - 1). => <metadata.name>-{0..N-1}
+<metadata.name>-{0..N-1}.<service_name>.<namespace_name>.svc.cluster.local	
+
+
+In statefulSet, the deletion of pods is done in descending order. That is the pod which was created last in order will be removed first.
+
+Files:
+assignment_4_statefulSet.yaml
+
+Note: It worked fine but one node did not come up due to less CPU
+
+SS1. Status of statefulset and pods
+SS2. Shows that when replica count was reduced to 2, cluster removed the last pod, unlike stateless cluster where it may remove any of them because they are nothing but replica of each other. This helps in maintaining the state of the application which depends upon the availability of specific node or service name.

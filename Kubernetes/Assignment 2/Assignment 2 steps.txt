@@ -1,0 +1,18 @@
+Assignment 2 steps
+
+- Run a Pod on each node of the kubernetes cluster. (Say 3 nodes)
+
+Solution:
+
+We can achieve this by using daemonset object for defining pod, which will schedule one pod per node
+
+yaml will be as follows:
+
+assignment_2_daemonset.yaml
+
+This query will help to find pod and node details
+
+kubectl get pod -o=custom-columns=NAME:.metadata.name,STATUS:.status.phase,NODE:.spec.nodeName
+
+Screenshot:
+ss1 shows node and pod details each node has only one pod

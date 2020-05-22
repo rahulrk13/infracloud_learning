@@ -1,0 +1,22 @@
+Assignment 9:
+Deploy a Pod which uses a service account. The pod tries to use a configmap. Setup RBAC for the service account such that the service account does not have access to the configmap resource.
+
+
+Solution:
+
+Service account are feature provided by Kubernetes which helps provided/restrict user access to specific cluster.
+RBAC: Role based access control is a mechanism with which we can make sure the access is provided based on user roles or groups and not directly to user. 
+
+Authorization in Kubernetes is additive, which means we can't specify a deny rule. 
+
+So to achieve the task in this assignment, first we will provide a role to SA, and check if it works, then we will keep the SA and remove the role and see what changes it does.
+
+Files:
+assignment_9_configmap.yaml
+assignment_9_pod.yaml
+assignment_9_sarbac.yaml
+
+Screenshots:
+ss1: shows all created resource
+ss2: Shows we are able to list the configmap from within the pod when Cluster role is attached to Service account
+ss3: Shows when we delete the Binding, service role is there but now it doesn’t have RBAC provided access, so it throws forbidden error

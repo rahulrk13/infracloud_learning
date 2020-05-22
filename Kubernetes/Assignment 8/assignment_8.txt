@@ -1,0 +1,23 @@
+Assignment 8:  Deploy a pod which uses the nginx reverse proxy configuration from a configmap
+
+Solution:
+Referred this page https://www.keycdn.com/support/nginx-reverse-proxy.
+To set up reverse-proxy, we need to create file named 'reverse-proxy.conf' in the directory '/etc/nginx/sites-available', which will have below config.
+
+server {
+    listen 80;
+    location / {
+        proxy_pass http://192.x.x.2;
+    }
+}
+
+files:
+
+assignment_8_deployment.yaml
+assignment_8_config_map.yaml
+assignment_8_service.yaml
+
+Screenshots:
+
+ss1: service, configmap and deployment are created
+ss2: shows that the settings was applied successfully with configmap

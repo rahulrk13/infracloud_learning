@@ -1,0 +1,5 @@
+Prometheous
+Assignment 1
+Download and run Prometheus locally or in a Docker container
+
+Screenshots shows prometheus up and running

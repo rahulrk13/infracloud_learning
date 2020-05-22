@@ -1,0 +1,18 @@
+Assignment 11: 
+Configure HPA to scale based on the CPU utilization when it goes beyond a certain threshold
+
+Solution:
+Horizontal Pod autos calling is beneficial when we want to setup automated auto scaling (increasing number of replica) based on any alerting condition. Here we will setup autos calling based on cpu usage in a container.
+
+Files:
+
+
+assignment_11_deployment.yaml
+assignment_11_hpa.yaml
+assignment_11_service.yaml
+
+Screenshots:
+
+ss1. Shows HPA, service and deployment created
+
+I wasn’t able to test a memory intensive task in the test env to test out the HPA

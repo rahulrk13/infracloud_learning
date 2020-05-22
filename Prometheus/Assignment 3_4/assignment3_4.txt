@@ -1,0 +1,19 @@
+Assignment 3: Write a query to find cpu usage
+
+Assignment 4: Write a query to find memory usage
+
+
+Solution:
+
+In local prometheus environment, installed the 'wmi exporter' to scrape the system configuration readings (similar to node exporter in linux). Updated teh scrape config so that new metrics are available in prometheus.
+
+Ran this query to find the CPU usage with respect to cores in idle mode (screenshot attached ss1)
+
+rate(wmi_cpu_time_total{instance="localhost:9182", mode="idle"}[5m])
+
+Sum of all cores cpu usage can be done with this query (Screenshot ss2)
+sum by (mode) rate(wmi_cpu_time_total{instance="localhost:9182", mode="idle"}[5m])
+
+
+To find memory available: (Screenshot ss3)
+rate(wmi_memory_available_bytes[10m])

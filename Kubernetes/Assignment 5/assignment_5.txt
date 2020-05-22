@@ -1,0 +1,4 @@
+Assignment 5. Deploy a Pod which uses a scratch disk.
+
+Solution.
+Scratch Disk is nothing but emptyDir volume that can be shared between multiple containers. We have already used this feature in Assignment 1 and 3.

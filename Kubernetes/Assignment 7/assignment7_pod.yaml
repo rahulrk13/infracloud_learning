@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: assignment7pod
+spec:
+  containers:
+    - image: nginx
+      name: nginx
+      env:
+        - name: USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: secretstore
+              key: username
+        - name: PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: secretstore
+              key: password

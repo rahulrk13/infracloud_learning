@@ -1,0 +1,57 @@
+Not working backup
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mytestpod-2
+spec:
+  containers:
+  - name: nginxinit
+    image: nginx
+    ports:
+    - name: web
+      containerPort: 80
+    volumeMounts:
+    - name: temp-dir
+      mountPath: /usr/share/nginx/html
+  initContainers:
+  - name: createandcopyfile
+    image: busybox
+    command: 
+    - echo
+    - "<h1>Hello World. This is Rahul.</h1>"
+    - >
+    - /temp-dir/index.html
+    volumeMounts:
+    - name: temp-dir
+      mountPath: "/temp-dir"
+  volumes:
+  - name: temp-dir
+    emptyDir: {}
+	
+----
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mytestpod-2
+spec:
+  containers:
+  - name: nginxinit
+    image: nginx
+    ports:
+    - name: web
+      containerPort: 80
+    volumeMounts:
+    - name: temp-dir
+      mountPath: /usr/share/nginx/html
+  initContainers:
+  - name: copyfile
+    image: busybox
+    command: ['echo "<h1>Hello World. This is Rahul.</h1>" > /temp-dir/index.html']
+    volumeMounts:
+    - name: temp-dir
+      mountPath: "/temp-dir"
+  volumes:
+  - name: temp-dir
+    emptyDir: {}

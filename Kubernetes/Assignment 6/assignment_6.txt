@@ -1,0 +1,15 @@
+Assignment 6.
+Deploy a Pod with multiple containers, one of the container creates random files, and the other list the contents of the created file.
+
+Solution:
+This can be achieved with Deployment /pod specification which will have shared volumes (scratch or persistent volumes). As the volume is shared between the containers, files written by one container will be readable by another container.
+
+
+
+files:
+
+assignment_6_pod.yaml
+
+Screenshots
+ss1. - Shows that we wrote a file from container 1
+ss2. - Logged into pod1, created a file
