@@ -6,6 +6,8 @@ This repo contains assignments done for Kubernetes and Prometheus at Infracloud 
 
 ├───Kubernetes
 │   ├───Assignment 1
+│   ├───Assignment 10
+│   ├───Assignment 11
 │   ├───Assignment 2
 │   ├───Assignment 3
 │   ├───Assignment 4
@@ -13,9 +15,7 @@ This repo contains assignments done for Kubernetes and Prometheus at Infracloud 
 │   ├───Assignment 6
 │   ├───Assignment 7
 │   ├───Assignment 8
-│   |───Assignment 9
-│   ├───Assignment 10
-│   └───Assignment 11
+│   └───Assignment 9
 └───Prometheus
     ├───Assignment 1
     ├───Assignment 2
